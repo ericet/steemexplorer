@@ -71,8 +71,8 @@ export default {
       this.$store.state.chain.steem_per_mvests = this.chain.steem_per_mvests
       this.$store.state.chain.haircut_price = this.chain.haircut_price
 
-      var result = await this.steem_database_call('get_current_median_history_price')
-      this.chain.feed_price = parseFloat(result.base)/parseFloat(result.quote)
+      // var result = await this.steem_database_call('get_current_median_history_price')
+      // this.chain.feed_price = parseFloat(result.base)/parseFloat(result.quote)
       this.$store.state.chain.feed_price = this.chain.feed_price
 
       this.chain.gap = this.chain.reward_balance / this.chain.recent_claims * 2 * 2e12
@@ -83,12 +83,12 @@ export default {
     },
 
     vests2sp(vests){
-      return (this.chain.steem_per_mvests * parseFloat(vests) / 1000000).toFixed(3) + ' ' + Config.SP;
+      return (parseFloat(vests) * parseFloat(this.chain.total_vesting_fund_blurt)/parseFloat(this.chain.total_vesting_shares)).toFixed(3)+' '+Config.SP;
     },
 
     witnessVotes2sp(votes){
       votes = parseInt(votes)
-      var sp = parseInt(votes)/1e12 * this.chain.steem_per_mvests
+      var sp = parseInt(votes)/1e6 * parseInt(this.chain.total_vesting_fund_blurt)/parseInt(this.chain.total_vesting_shares)
       if(sp < 1e3) return `${sp.toFixed(2)} ${Config.SP}`
       if(sp < 1e6) return `${(sp/1e3).toFixed(2)}k ${Config.SP}`
       if(sp < 1e9) return `${(sp/1e6).toFixed(2)} million ${Config.SP}`

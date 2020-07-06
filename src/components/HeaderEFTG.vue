@@ -6,7 +6,7 @@
     <b-navbar toggleable="lg" type="dark" variant="primary">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <router-link :to="linkLogo" class="nav-item nav-link"><div id="logo"><img src="../assets/steem-logo.png" /></div></router-link>
+          <router-link :to="linkLogo" class="nav-item nav-link"><div id="logo"><img src="../assets/blurt-logo.png" /></div></router-link>
         </li>
       </ul>
       <b-navbar v-if="$store.state.auth.logged" class="ml-auto d-lg-none" style="margin:0;">
@@ -50,7 +50,7 @@
             <router-link to="/proposals" class="nav-item nav-link"><div class="extra-padding">Proposals</div></router-link>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <!-- <ul class="navbar-nav ml-auto">
           <li class="nav-item d-lg-block d-none">
             <div v-if="$store.state.auth.logged">
               <b-nav-item-dropdown size="lg" variant="link" no-caret right>
@@ -61,7 +61,6 @@
                 </template>
                 <b-dropdown-header>{{$store.state.auth.username}}</b-dropdown-header>
                 <b-dropdown-divider></b-dropdown-divider>
-                <!--<router-link to="/profileissuers" class="dropdown-item no-a" style="border-bottom:0px;"><font-awesome-icon icon="key" class="mr-2"/>Issuers</router-link>-->
                 <b-dropdown-item @click="logout">Logout</b-dropdown-item>
               </b-nav-item-dropdown>
             </div>
@@ -69,7 +68,7 @@
               <button class="btn btn-primary" @click="showModalAuth">Login</button>
             </div>
           </li>
-        </ul>
+        </ul> -->
       </b-collapse>
     </b-navbar>
   </div>

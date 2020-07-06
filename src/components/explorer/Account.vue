@@ -24,8 +24,8 @@
           <card-data :data="this.witnessGenerals"></card-data>
           <h3>Witness props</h3>
           <card-data :data="this.witness.props"></card-data>
-          <h3>SBD exchange rate</h3>
-          <card-data :data="this.witness.sbd_exchange_rate"></card-data>          
+          <!-- <h3>SBD exchange rate</h3>
+          <card-data :data="this.witness.sbd_exchange_rate"></card-data>           -->
         </div>
         <h2>{{this.account.name}} votes for</h2>
         <card-data :data="this.account.witness_votes" typeCard="witnesses" :link="true"></card-data>
@@ -197,7 +197,7 @@ export default {
       this.accountGenerals = {
         voting_power: Utils.getVotingPower(this.account)/100 + '%',
         balance: this.account.balance,
-        sbd_balance: this.account.sbd_balance,
+        // sbd_balance: this.account.sbd_balance,
         savings_balance: this.account.savings_balance,
         steem_power: this.vests2sp(this.account.vesting_shares) + ' (' + (delegated>0?'+':'') + this.vests2sp(delegated) + ')',
       }

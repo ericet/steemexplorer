@@ -1,7 +1,7 @@
 const config = {
   'production': {
     RPC_NODES : [
-      'https://api.steemit.com',
+      'https://rpc.blurt.world',
     ],
     EFTG_HARDFORK_0_1 : false
   },
@@ -14,13 +14,13 @@ const config = {
   'development': {
     RPC_NODES : [
       //'https://testnet.steemitdev.com',
-      'https://api.steemit.com',
+      'https://rpc.blurt.world',
     ],
     EFTG_HARDFORK_0_1 : true
   },
   'testnet': {
     RPC_NODES : [
-      'https://testnet.steemitdev.com',
+      'https://rpc.blurt.world',
     ],
     EFTG_HARDFORK_0_1 : false
   },
@@ -33,8 +33,8 @@ const PAGE_AFTER_LOGIN = '/'
 const PAGE_AFTER_LOGOUT = '/'
 
 const SBD = 'SBD';
-const STEEM = 'STEEM';
-const SP = 'SP';
+const STEEM = 'BLURT';
+const SP = 'BP';
 const VESTS = 'VESTS';
 
 const HARDFORK = 21
@@ -43,7 +43,7 @@ const EXPLORER = '/explorer/'
 const EXPLORER2 = '/steemexplorer/#/explorer/'
 const DSTEEM_TIMEOUT = 5000 //ms
 
-const STEEM_ADDRESS_PREFIX = 'STM';
+const STEEM_ADDRESS_PREFIX = 'BLT';
 //const STEEM_ADDRESS_PREFIX = 'TST';
 const STEEM_100_PERCENT = 10000;
 const STEEM_VOTE_REGENERATION_SECONDS = 5 * 24 * 60 * 60;
@@ -54,8 +54,8 @@ const STEEM_BLOCKS_PER_YEAR = (365 * 24 * 60 * 60) / 3;
 const STEEM_BLOCKS_PER_DAY = (24 * 60 * 60) / 3;
 const STEEM_SBD_START_PERCENT = 900;
 const STEEM_SBD_STOP_PERCENT = 1000;
-const STEEM_CHAIN_ID = '0000000000000000000000000000000000000000000000000000000000000000'
-//const STEEM_CHAIN_ID = '46d82ab7d8db682eb1959aed0ada039a6d49afa1602491f93dde9cac3e8e6c32'
+// const STEEM_CHAIN_ID = '0000000000000000000000000000000000000000000000000000000000000000'
+const STEEM_CHAIN_ID = 'cd8d90f29ae273abec3eaa7731e25934c63eb654d55080caff2ebb7f5df6381f'
 const STEEM_PROPOSAL_MAX_IDS_NUMBER = 5
 
 const MAP = {

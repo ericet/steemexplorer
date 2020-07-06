@@ -10,28 +10,27 @@
           <div class="title">Current supply</div><br
           >{{this.chain.current_supply}}<br
           >{{this.chain.current_sbd_supply}}<br
-          ><hr>virtual {{this.chain.virtual_supply}}
+          >
         </div>
-        <div class="card">
+        <!-- <div class="card">
           <div class="title">Steem Price</div><br
           >Witnesses price: ${{this.chain.witnesses_price.toFixed(4)}}<br
           >Haircut: ${{this.chain.haircut_price.toFixed(4)}}<br
           ><hr>Feed price: ${{this.chain.feed_price.toFixed(4)}}
-        </div>
+        </div> -->
         <div class="card">
           <div class="title">Inflation</div><br
           >Annual rate: {{this.chain.current_inflation_rate}}<br
-          >({{this.chain.new_steem_per_day}} per day)
+          >
         </div>
         <div class="card">
           <div class="title">Stake</div><br
-          >Fund: {{this.chain.total_vesting_fund_steem}}<br
-          >({{this.chain.sp_percent.toFixed(2)}}% of virtual sup.)<br
+          >Fund: {{this.chain.total_vesting_fund_blurt}}<br
+          
           >Shares: {{this.chain.total_vesting_shares}}<br
-          ><hr
-          >{{this.chain.steem_per_mvests.toFixed(3)}} {{this.STEEM_SYMBOL}} per m{{this.VESTS_SYMBOL}}          
+          >     
         </div>      
-        <div class="card"> 
+        <!-- <div class="card"> 
           <div class="title">{{this.SBD_SYMBOL}}</div><br
           >{{this.chain.current_sbd_supply}}<br
           >(<span :class="{
@@ -42,7 +41,7 @@
             > of virtual sup.)<br
           >Print rate: {{this.chain.sbd_print_rate/100}}%<br
           >Interest rate: {{this.chain.sbd_interest_rate/100}}%
-        </div>
+        </div> -->
       </div>
       <div v-else>
         <div class="loader"></div>
@@ -51,17 +50,15 @@
         <div class="card">
           <div class="title">Reward fund</div><br
           >{{this.chain.reward_balance}} {{this.STEEM_SYMBOL}}<br
-          >({{this.chain.reward_percent.toFixed(2)}}% of virtual sup.)<br
           >for next 15 days<br
           ><hr
-          >{{this.chain.reward_balance_day}} per day<br
-          >vote of {{this.chain.vote_value_1000_sp.toFixed(3)}} per 1000 {{this.SP_SYMBOL}}
+          >{{this.chain.reward_balance_day}} per day
           <br><hr>
           recent claims {{this.chain.recent_claims}}<br>
-          <a href="https://steemit.com/@jga/complete-guide-to-understand-rewards-in-hf21-part-1">gap</a>: {{this.chain.gap.toFixed(3)}} {{this.STEEM_SYMBOL}} ({{this.chain.gap_sbd.toFixed(3)}} {{this.SBD_SYMBOL}})
-          <hr>Post payout simulation {{example_post.payout.toFixed(3)}} {{this.SBD_SYMBOL}}
+          <a href="https://steemit.com/@jga/complete-guide-to-understand-rewards-in-hf21-part-1">gap</a>: {{this.chain.gap.toFixed(3)}} {{this.STEEM_SYMBOL}} 
+          <!-- <hr>Post payout simulation {{example_post.payout.toFixed(3)}} {{this.SBD_SYMBOL}}
           <br>claims per rshare {{example_post.claims_per_rshare.toFixed(4)}}
-          <br><input type="range" min="0" max="500" v-model="example_post.slider" class="slider" id="slider-example-post">
+          <br><input type="range" min="0" max="500" v-model="example_post.slider" class="slider" id="slider-example-post"> -->
         </div>
       </div>
       <div v-else>
@@ -183,7 +180,7 @@ export default {
       console.log('no more loader')
 
       this.getWitnessSchedule()
-      this.getWitnessesPrice()
+      // this.getWitnessesPrice()
 
       this.ints.blocks = setInterval(this.fetchBlocks, 3000);
       this.ints.chainprops = setInterval(()=>{
@@ -239,6 +236,7 @@ export default {
       console.log('get extended chain properties')
       var current_inflation_rate = Utils.getInflationRate(this.chain.head_block_number)
       this.chain.current_inflation_rate = current_inflation_rate/100 + '%'
+      console.log(this.chain)
       this.chain.new_steem_per_day = (Config.STEEM_BLOCKS_PER_DAY * parseFloat(this.chain.virtual_supply) * (current_inflation_rate / 10000) / Config.STEEM_BLOCKS_PER_YEAR ).toFixed(3) + ' ' + Config.STEEM;
       this.chain.sp_percent = parseFloat(this.chain.total_vesting_fund_steem) * 100 / parseFloat(this.chain.virtual_supply);
       this.chain.sbd_percent = parseFloat(this.chain.current_sbd_supply) / this.chain.feed_price * 100 / parseFloat(this.chain.virtual_supply);      

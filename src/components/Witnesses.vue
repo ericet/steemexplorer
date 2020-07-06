@@ -14,7 +14,7 @@
             <th scope="col">Approval</th>
             <th scope="col">Last Block</th>
             <th scope="col">Miss</th>
-            <th scope="col">Vote</th>
+            <!-- <th scope="col">Vote</th> -->
           </tr>
         </thead>
         <tbody>
@@ -34,13 +34,13 @@
             <td>{{ wit.votes_sp }}</td>
             <td>{{ wit.last_confirmed_block_num }}</td>
             <td>{{ wit.total_missed }}</td>
-            <td>
+            <!-- <td>
               <button class="btn" @click="toggleVote(index)" 
                 :class="{'btn-primary':wit.newVote.approve, 'btn-secondary':!wit.newVote.approve}"
               >
                 <font-awesome-icon icon="check"/>
               </button>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
@@ -131,6 +131,7 @@ export default {
         }catch(error){}
         wit.imgUrl = Utils.extractUrlProfileImage(metadata)
         wit.steem_power = this.vests2sp(accounts[i].vesting_shares)
+        console.log(wit)
         this.witnesses.push(wit)
       }
       this.witLoaded = true
