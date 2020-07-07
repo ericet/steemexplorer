@@ -43,9 +43,9 @@
           <li class="nav-item">
             <router-link to="/broadcast" class="nav-item nav-link"><div class="extra-padding">Broadcast</div></router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/reports" class="nav-item nav-link"><div class="extra-padding">Reports</div></router-link>
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link to="/proposals" class="nav-item nav-link"><div class="extra-padding">Proposals</div></router-link>
           </li>

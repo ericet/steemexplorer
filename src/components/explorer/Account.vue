@@ -195,11 +195,11 @@ export default {
         
       var delegated = parseFloat(this.account.received_vesting_shares) - parseFloat(this.account.delegated_vesting_shares);
       this.accountGenerals = {
-        voting_power: Utils.getVotingPower(this.account)/100 + '%',
-        balance: this.account.balance,
+        "Voting Power": Utils.getVotingPower(this.account)/100 + '%',
+        "Balance": this.account.balance,
         // sbd_balance: this.account.sbd_balance,
-        savings_balance: this.account.savings_balance,
-        steem_power: this.vests2sp(this.account.vesting_shares) + ' (' + (delegated>0?'+':'') + this.vests2sp(delegated) + ')',
+        "Saving Balance": this.account.savings_balance,
+        "Blurt Power": this.vests2sp(this.account.vesting_shares) + ' (' + (delegated>0?'+':'') + this.vests2sp(delegated) + ')',
       }
       
       //var result = await this.client.database.call('get_account_history',[name,-1,1])
