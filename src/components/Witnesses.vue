@@ -13,6 +13,7 @@
             <th scope="col">Version</th>
             <th scope="col">Approval</th>
             <th scope="col">Last Block</th>
+             <th scope="col">Account Creation Fee</th>
             <th scope="col">Miss</th>
             <!-- <th scope="col">Vote</th> -->
           </tr>
@@ -33,6 +34,7 @@
             <td>{{ wit.running_version }}</td>
             <td>{{ wit.votes_sp }}</td>
             <td>{{ wit.last_confirmed_block_num }}</td>
+            <td>{{ wit.props.account_creation_fee }}</td>
             <td>{{ wit.total_missed }}</td>
             <!-- <td>
               <button class="btn" @click="toggleVote(index)" 
