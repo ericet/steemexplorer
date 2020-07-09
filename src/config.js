@@ -1,7 +1,7 @@
 const config = {
   'production': {
     RPC_NODES : [
-      'https://rpc.blurt.world',
+      'https://api.blurt.tools',
     ],
     EFTG_HARDFORK_0_1 : false
   },
@@ -20,7 +20,7 @@ const config = {
   },
   'testnet': {
     RPC_NODES : [
-      'https://rpc.blurt.world',
+      'https://api.blurt.tools',
     ],
     EFTG_HARDFORK_0_1 : false
   },
