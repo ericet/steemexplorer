@@ -133,7 +133,6 @@ export default {
         }catch(error){}
         wit.imgUrl = Utils.extractUrlProfileImage(metadata)
         wit.steem_power = this.vests2sp(accounts[i].vesting_shares)
-        console.log(wit)
         this.witnesses.push(wit)
       }
       this.witLoaded = true

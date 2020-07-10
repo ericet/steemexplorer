@@ -86,7 +86,7 @@ export default {
 
     witnessVotes2sp(votes){
       votes = parseInt(votes)
-      var sp = parseInt(votes)/1e6 * parseInt(this.chain.total_vesting_fund_blurt)/parseInt(this.chain.total_vesting_shares)
+      var sp = parseInt(votes)/1e6 * this.chain.steem_per_mvests
       if(sp < 1e3) return `${sp.toFixed(2)} ${Config.SP}`
       if(sp < 1e6) return `${(sp/1e3).toFixed(2)}k ${Config.SP}`
       if(sp < 1e9) return `${(sp/1e6).toFixed(2)} million ${Config.SP}`
