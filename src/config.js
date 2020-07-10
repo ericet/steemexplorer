@@ -1,7 +1,7 @@
 const config = {
   'production': {
     RPC_NODES : [
-      'https://blurtd.steem.buzz',
+      'https://rpc.blurt.world',
     ],
     EFTG_HARDFORK_0_1 : false
   },
@@ -14,7 +14,7 @@ const config = {
   'development': {
     RPC_NODES : [
       //'https://testnet.steemitdev.com',
-      'https://blurtd.steem.buzz',
+      'https://rpc.blurt.world',
     ],
     EFTG_HARDFORK_0_1 : true
   },

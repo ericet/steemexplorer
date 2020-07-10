@@ -191,7 +191,7 @@ export default {
         })
       }, 12000);
 
-      this.handleInputSlider()
+      //this.handleInputSlider()
     })
   },
   
@@ -343,21 +343,21 @@ export default {
       })
     },
 
-    handleInputSlider() {
-      let self = this
-      this.$nextTick( ()=>{
-        var slider = document.getElementById('slider-example-post')
-        slider.oninput = function() {
-          self.example_post.exponent = self.example_post.slider * (3 - (-3))/500 -3 // (10^3sbd - 10^-3sbd)/slider_resolution + 10^-3sbd
-          self.example_post.payout = Math.pow(10, self.example_post.exponent)
+    // handleInputSlider() {
+    //   let self = this
+    //   this.$nextTick( ()=>{
+    //     var slider = document.getElementById('slider-example-post')
+    //     slider.oninput = function() {
+    //       self.example_post.exponent = self.example_post.slider * (3 - (-3))/500 -3 // (10^3sbd - 10^-3sbd)/slider_resolution + 10^-3sbd
+    //       self.example_post.payout = Math.pow(10, self.example_post.exponent)
 
-          var payout_steem = self.example_post.payout / self.chain.feed_price
-          var claims = payout_steem * self.chain.recent_claims / self.chain.reward_balance
-          var rshares = (claims-4e12)/2 + Math.sqrt( claims*claims + 6*claims*4e12 + 4e12*4e12 )/2
-          self.example_post.claims_per_rshare = claims/rshares
-        }
-      })
-    },
+    //       var payout_steem = self.example_post.payout / self.chain.feed_price
+    //       var claims = payout_steem * self.chain.recent_claims / self.chain.reward_balance
+    //       var rshares = (claims-4e12)/2 + Math.sqrt( claims*claims + 6*claims*4e12 + 4e12*4e12 )/2
+    //       self.example_post.claims_per_rshare = claims/rshares
+    //     }
+    //   })
+    // },
   }
 }
 </script>

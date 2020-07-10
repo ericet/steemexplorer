@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-6">
           <h2>Proposals</h2>
-          <div v-if="steemdao.name">Total fund: {{steemdao.sbd_balance}}</div>
+          <div v-if="steemdao.name">Total fund: {{steemdao.balance}}</div>
           <div v-if="steemdao.name">Daily budget: {{steemdao.daily_budget}}</div>
           <div v-if="steemdao.name">Budget for the next hour: {{steemdao.hourly_budget}}</div>
         </div>
@@ -62,11 +62,11 @@
               <div class="col-md-4">From {{p.start_date}} to {{p.end_date}} ({{p.total_time}})</div>
               <div class="col-md-2">{{p.daily_pay}} daily</div>
               <div class="col-md-2">{{p.votes_sp}}</div>
-              <div class="col-md-1 text-right">
+              <!-- <div class="col-md-1 text-right">
                 <button class="btn" v-on:click.stop="toggleVote(index)" :class="{'btn-primary':p.newVote, 'btn-secondary':!p.newVote}">
                   <font-awesome-icon icon="check"/>
                 </button>
-              </div>
+              </div> -->
             </div>
           </li>
         </ul>
@@ -138,10 +138,11 @@ export default {
   methods: {
     async getSteemDao(){
       try{
-        var accounts = await this.steem_database_call('get_accounts',[['steem.dao']])
+        var accounts = await this.steem_database_call('get_accounts',[['blurt.dao']])
         this.steemdao = accounts[0]
-        this.steemdao.daily_budget = (parseFloat(this.steemdao.sbd_balance)/100).toFixed(3) + ' ' + Config.SBD
-        this.steemdao.hourly_budget = (parseFloat(this.steemdao.sbd_balance)/(24*100)).toFixed(3) + ' ' + Config.SBD
+        console.log(this.steemdao);
+        this.steemdao.daily_budget = (parseFloat(this.steemdao.balance)/100).toFixed(3) + ' ' + Config.SP
+        this.steemdao.hourly_budget = (parseFloat(this.steemdao.balance)/(24*100)).toFixed(3) + ' ' + Config.SP
       }catch(error){
         this.showDanger('Problems loading steem.dao')
         throw error
