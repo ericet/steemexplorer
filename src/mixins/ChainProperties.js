@@ -49,7 +49,6 @@ export default {
     },
     
     async getChainProperties(force = false) {
-
       if(!force && this.$store.state.chain.steem_per_mvests) {
         this.chain = this.$store.state.chain
         return
@@ -65,7 +64,7 @@ export default {
 
       var result = await this.steem_database_call('get_dynamic_global_properties');
       for(var i in result) this.chain[i] = result[i]
-      this.chain.steem_per_mvests = parseFloat(result.total_vesting_fund_steem)*1000000/parseFloat(result.total_vesting_shares)
+      this.chain.steem_per_mvests = parseFloat(result.total_vesting_fund_blurt)/parseFloat(result.total_vesting_shares)
       this.chain.haircut_price = 9*parseFloat(result.current_sbd_supply) / parseFloat(result.current_supply)
 
       this.$store.state.chain.steem_per_mvests = this.chain.steem_per_mvests
@@ -73,17 +72,16 @@ export default {
 
       // var result = await this.steem_database_call('get_current_median_history_price')
       // this.chain.feed_price = parseFloat(result.base)/parseFloat(result.quote)
-      this.$store.state.chain.feed_price = this.chain.feed_price
+      // this.$store.state.chain.feed_price = this.chain.feed_price
 
       this.chain.gap = this.chain.reward_balance / this.chain.recent_claims * 2 * 2e12
       this.chain.gap_sbd = this.chain.gap * this.chain.feed_price
-
       this.updateRS();
       this.changeFeedPrice(this.chain.feed_price)
     },
 
     vests2sp(vests){
-      return (parseFloat(vests) * parseFloat(this.chain.total_vesting_fund_blurt)/parseFloat(this.chain.total_vesting_shares)).toFixed(3)+' '+Config.SP;
+      return (parseFloat(vests) * this.chain.steem_per_mvests).toFixed(3)+' '+Config.SP;
     },
 
     witnessVotes2sp(votes){
