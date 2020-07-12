@@ -57,7 +57,7 @@ export default {
       for(var i=0; i<this.beneficiaries.length ; i++){
         var b = this.beneficiaries[i];
         b.bene_weight = (b.weight/100).toFixed(2) + '%';
-        b.bene_value = (total_payout_author_sbd * parseInt(b.weight) / 10000).toFixed(3) +' '+ Config.SBD;
+        b.bene_value = (total_payout_author_sbd * parseInt(b.weight) / 10000).toFixed(3) +' '+ Config.SP;
         this.$set(this.beneficiaries, i, b)
       }
     },    

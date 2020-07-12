@@ -4,7 +4,6 @@
       ><div class="col-2">Voter</div
       ><div class="col-2">Weight</div
       ><div class="col-2">Value</div
-      ><div class="col-2">New payout</div
       ><div class="col-2">Curation</div
       ><div class="col-2">Time</div        
     ></div>
@@ -15,7 +14,6 @@
       </div
       ><div class="col-2">{{v.vote_weight}}</div
       ><div class="col-2">{{v.vote_value}}</div
-      ><div class="col-2">{{v.vote_value_before}}</div
       ><div class="col-2">{{v.curation}}</div
       ><div class="col-2" :title="v.time">{{v.time_text}}</div>
     </div>
@@ -84,7 +82,7 @@ export default {
        total_payout_curator_sbd = parseFloat(this.payout.curator);
        total_weight = votes_aux.reduce(function(t,v){return t+v.weight}, 0);
       }else{
-       total_payout_curator_sbd = 0.25 * total_payout_sbd;
+       total_payout_curator_sbd = 0.50 * total_payout_sbd;
        total_weight = this.payout.total_vote_weight;
        if(this.payout.net_rshares != total_rshares){
          console.log('net_rshares do not coincide with the sum of votes')
@@ -102,17 +100,17 @@ export default {
         var old_claims = this.evaluate_curve(net_rshares, curve)
         net_rshares += parseInt(v.rshares)
         var new_claims = this.evaluate_curve(net_rshares, curve)
-
-        v.vote_value = ((new_claims-old_claims) * this.chain.sbd_per_rshare).toFixed(3) + ' ' + Config.SBD
-        v.vote_value_before = (new_claims * this.chain.sbd_per_rshare).toFixed(3) + ' ' + Config.SBD
+  console.log(this.chain)
+        v.vote_value = ((new_claims-old_claims) * this.chain.steem_per_rshare).toFixed(3) + ' ' + Config.SP
+        v.vote_value_before = (new_claims * this.chain.steem_per_rshare).toFixed(3) + ' ' + Config.SP
         v.vote_weight = (v.percent/100).toFixed(2) + '%';
         if(this.payout.old_post){
-          v.curation = (total_payout_curator_sbd * v.weight / total_weight).toFixed(3) +' '+ Config.SBD;
+          v.curation = (total_payout_curator_sbd * v.weight / total_weight).toFixed(3) +' '+ Config.SP;
         }else{
           if(this.chain.feed_price >= 0){
             v.curation = (total_payout_curator_sbd * v.weight / total_weight / this.chain.feed_price).toFixed(3) +' '+ Config.SP;
           }else{
-            v.curation = (total_payout_curator_sbd * v.weight / total_weight).toFixed(3) +' '+ Config.SBD;
+            v.curation = (total_payout_curator_sbd * v.weight / total_weight).toFixed(3) +' '+ Config.SP;
           }
         }
         v.time_text = Utils.getTimestamp(v.time);
@@ -140,14 +138,14 @@ export default {
       for(var i=0; i<votes_aux.length ; i++){
         var v = votes_aux[i]
         v.vote_weight = (v.percent/100).toFixed(2) + '%';
-        v.vote_value = (total_payout_sbd * parseInt(v.rshares) / total_rshares).toFixed(3) +' '+ Config.SBD;
+        v.vote_value = (total_payout_sbd * parseInt(v.rshares) / total_rshares).toFixed(3) +' '+ Config.SP;
         if(this.payout.old_post){
-          v.curation = (total_payout_curator_sbd * v.weight / total_weight).toFixed(3) +' '+ Config.SBD;
+          v.curation = (total_payout_curator_sbd * v.weight / total_weight).toFixed(3) +' '+ Config.SP;
         }else{
           if(this.chain.feed_price >= 0){
             v.curation = (total_payout_curator_sbd * v.weight / total_weight / this.chain.feed_price).toFixed(3) +' '+ Config.SP;
           }else{
-            v.curation = (total_payout_curator_sbd * v.weight / total_weight).toFixed(3) +' '+ Config.SBD;
+            v.curation = (total_payout_curator_sbd * v.weight / total_weight).toFixed(3) +' '+ Config.SP;
           }
         }
         v.time_text = Utils.getTimestamp(v.time);

@@ -121,7 +121,7 @@ export default {
       this.payout.old_post = (new Date()) - (new Date(result.cashout_time+'Z')) > 0;
       this.payout.net_rshares = result.net_rshares
       if(this.payout.old_post){
-        this.payout.total = (parseFloat(result.total_payout_value) + parseFloat(result.curator_payout_value)).toFixed(3) +' '+ Config.SBD;
+        this.payout.total = (parseFloat(result.total_payout_value) + parseFloat(result.curator_payout_value)).toFixed(3) +' '+ Config.SP;
         this.payout.author = result.total_payout_value;
         this.payout.curator = result.curator_payout_value;
       }else{
@@ -143,8 +143,8 @@ export default {
         total_payout_author_sbd = parseFloat(this.payout.author);
         total_payout_curator_sbd = parseFloat(this.payout.curator);
       }else{
-        total_payout_author_sbd = 0.75 * total_payout_sbd ;
-        total_payout_curator_sbd = 0.25 * total_payout_sbd;
+        total_payout_author_sbd = 0.50 * total_payout_sbd ;
+        total_payout_curator_sbd = 0.50 * total_payout_sbd;
         var curation_remainder = total_payout_curator_sbd * (this.post.total_vote_weight - this.post.active_votes.reduce(function(t,v){return t+v.weight}, 0) ) / this.post.total_vote_weight;
         total_payout_curator_sbd -= curation_remainder;
         if( forward_curation_remainder ){
@@ -159,16 +159,16 @@ export default {
       total_payout_author_sbd -= total_payout_beneficiaries_sbd;
       
       this.payout.card = {
-        Author: total_payout_author_sbd.toFixed(3) + ' ' + Config.SBD +
+        Author: total_payout_author_sbd.toFixed(3) + ' ' + Config.SP +
                ' ('+(100*total_payout_author_sbd/total_payout_sbd).toFixed(2)+'%)',
-        Curators: total_payout_curator_sbd.toFixed(3) + ' ' + Config.SBD +
+        Curators: total_payout_curator_sbd.toFixed(3) + ' ' + Config.SP +
                ' ('+(100*total_payout_curator_sbd/total_payout_sbd).toFixed(2)+'%)',
-        Beneficiaries: total_payout_beneficiaries_sbd.toFixed(3) + ' ' + Config.SBD +
+        Beneficiaries: total_payout_beneficiaries_sbd.toFixed(3) + ' ' + Config.SP +
                ' ('+(100*total_payout_beneficiaries_sbd/total_payout_sbd).toFixed(2)+'%)',
       };
       
       if(total_payout_reward_pool_sbd > 0){
-        this.payout.card.Reward_Pool = total_payout_reward_pool_sbd.toFixed(3) + ' ' + Config.SBD +
+        this.payout.card.Reward_Pool = total_payout_reward_pool_sbd.toFixed(3) + ' ' + Config.SP +
                ' ('+(100*total_payout_reward_pool_sbd/total_payout_sbd).toFixed(2)+'%)';
       }
     }

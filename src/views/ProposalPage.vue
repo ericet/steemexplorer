@@ -145,7 +145,7 @@ export default {
       proposal.vote = false
       proposal.newVote = false
       proposal.total_time = Utils.textTime(delta_t)
-      proposal.total_pay = (parseFloat(proposal.daily_pay) * delta_t / (1000*60*60*24)).toFixed(3) + ' ' + Config.SBD
+      proposal.total_pay = (parseFloat(proposal.daily_pay) * delta_t / (1000*60*60*24)).toFixed(3) + ' ' + Config.SP
       proposal.active = this.isActive(proposal)
       proposal.status = proposal.active ? 'active' : 'inactive'
       if(proposal.active){

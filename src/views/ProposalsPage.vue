@@ -163,7 +163,7 @@ export default {
         p.vote = false
         p.newVote = false
         p.total_time = Utils.textTime(delta_t)
-        p.total_pay = (parseFloat(p.daily_pay) * delta_t / (1000*60*60*24)).toFixed(3) + ' ' + Config.SBD
+        p.total_pay = (parseFloat(p.daily_pay) * delta_t / (1000*60*60*24)).toFixed(3) + ' ' + Config.SP
         p.active = this.isActive(p)
         p.status = p.active ? 'started' : 'upcoming'
         this.proposals.push(p)
