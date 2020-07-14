@@ -9,15 +9,14 @@
         <div class="card">
           <div class="title">Current supply</div><br
           >{{this.chain.current_supply}}<br
-          >{{this.chain.current_sbd_supply}}<br
           >
         </div>
-        <!-- <div class="card">
-          <div class="title">Steem Price</div><br
-          >Witnesses price: ${{this.chain.witnesses_price.toFixed(4)}}<br
-          >Haircut: ${{this.chain.haircut_price.toFixed(4)}}<br
-          ><hr>Feed price: ${{this.chain.feed_price.toFixed(4)}}
-        </div> -->
+        <div class="card">
+          <div class="title">Transaction Fees</div><br
+          >Operation Flat Fee: {{this.chain.operation_flat_fee}}<br
+          >Bandwidth Fee/KByte: {{this.chain.bandwidth_kbytes_fee}}<br
+          >
+        </div>
         <div class="card">
           <div class="title">Inflation</div><br
           >Annual rate: {{this.chain.current_inflation_rate}}<br
@@ -244,6 +243,7 @@ export default {
       this.chain.reward_percent = parseFloat(this.chain.reward_balance) * 100 / parseFloat(this.chain.virtual_supply);
       this.chain.reward_balance_day = (parseFloat(this.chain.reward_balance)/15).toFixed(3) + ' ' + Config.STEEM; 
       this.chain.vote_value_1000_sp = (1/50)*1000*this.chain.steem_per_rshare*1e12 / this.chain.steem_per_mvests * this.chain.feed_price;
+      console.log(this.chain)
     },
 
     async getWitnessesPrice() {

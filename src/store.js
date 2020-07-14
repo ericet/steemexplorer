@@ -24,6 +24,8 @@ export default new Vuex.Store({
       recent_claims: null,
       sbd_per_rshare: null,
       steem_per_rshare: null,
+      operation_flat_fee:null,
+      bandwidth_kbytes_fee:null,
     },
     rpc_node: Config.RPC_NODES[0],
     max_fails: 1,

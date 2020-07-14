@@ -76,6 +76,13 @@ export default {
 
       this.chain.gap = this.chain.reward_balance / this.chain.recent_claims * 2 * 2e12
       this.chain.gap_sbd = this.chain.gap * this.chain.feed_price
+
+      let properties = await this.steem_database_call('get_chain_properties');
+      this.chain.operation_flat_fee = properties.operation_flat_fee;
+      this.chain.bandwidth_kbytes_fee = properties.bandwidth_kbytes_fee;
+      this.$store.state.chain.operation_flat_fee = this.chain.operation_flat_fee;
+      this.$store.state.chain.bandwidth_kbytes_fee  = this.chain.bandwidth_kbytes_fee
+
       this.updateRS();
       this.changeFeedPrice(this.chain.feed_price)
     },
