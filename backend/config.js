@@ -50,7 +50,7 @@ const VESTS = 'VESTS';
 
 const HARDFORK = 19
 
-const EXPLORER = '/'
+const EXPLORER = '/explorer/'
 const DSTEEM_TIMEOUT = 5000 //ms
 
 const STEEM_ADDRESS_PREFIX = 'EUR';

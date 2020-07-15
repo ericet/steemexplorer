@@ -16,7 +16,7 @@ import TransactionExplorer from '@/components/explorer/Transaction'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  //mode: 'history',
   base: process.env.BASE_URL,
   /*routes: [
     {
@@ -80,24 +80,24 @@ export default new Router({
       component: () => import('./views/ReportsPage.vue')
     },
     {
-      path: "/",
+      path: "/explorer",
       name: "Explorer",
       component: HomeExplorer
     },
     {
-      path: '/@:account',
+      path: '/explorer/@:account',
       name: 'Account',
       component: AccountExplorer
     },{
-      path: '/@:account/:permlink',
+      path: '/explorer/@:account/:permlink',
       name: 'Post',
       component: PostExplorer
     },{
-      path: '/b/:id',
+      path: '/explorer/b/:id',
       name: 'Block',
       component: BlockExplorer
     },{
-      path: '/tx/:tx',
+      path: '/explorer/b/:id/:tx',
       name: 'Transaction',
       component: TransactionExplorer
     },{
