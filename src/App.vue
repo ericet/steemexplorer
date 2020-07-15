@@ -48,7 +48,7 @@ body {
 }
 
 #app .navbar a:hover{
-  background-color: #0b47af;  
+  background-color: #f2652e;  
 }
 
 #app .list-group-item:hover{
@@ -76,11 +76,11 @@ body {
 }
 
 #app .btn-primary {
-  background-color: #3c6fc7;
+  background-color: #f2652e;
 }
 
 #app .btn-primary:hover {
-  background-color: #0b47af;
+  background-color: #f54906;
 }
 
 #app .btn-secondary {
@@ -96,7 +96,7 @@ body {
 }
 
 #app .bg-primary {
-  background-color: #3c6fc7 !important;
+  background-color: #2c2e30 !important;
 }
 
 #app .bg-secondary {
@@ -116,8 +116,8 @@ body {
 }
 
 #app .table-primary th{
-  background-color: #3c6fc7 !important;
-  border-color: #3c6fc7 !important;
+  background-color: #f2652e !important;
+  border-color: #f2652e !important;
   color: white !important;
 }
 
@@ -139,8 +139,8 @@ body {
   margin: 20px auto;
   border: 3px solid #ffffff;  
   border-radius: 50%;
-  border-top: 3px solid #0b47af;
-  border-right: 3px solid #0b47af;
+  border-top: 3px solid #f2652e;
+  border-right: 3px solid #f2652e;
   width: 2rem;
   height: 2rem;
   -webkit-animation: spin 0.7s linear infinite; /* Safari */
