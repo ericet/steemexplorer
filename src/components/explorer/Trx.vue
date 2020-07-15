@@ -1,7 +1,7 @@
 <template>
   <div class="trx">
     <div class="tx-link">
-      <router-link :to="EXPLORER+'b/'+blockNum+'/'+trx_id">{{trx_id.substring(0,7)}}</router-link>
+      <router-link :to="EXPLORER+'tx/'+trx_id">{{trx_id.substring(0,7)}}</router-link>
     </div
     ><span class="operation break-word">
       <div v-if="typeOp == 'curation_reward'">
