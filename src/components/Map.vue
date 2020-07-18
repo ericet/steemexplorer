@@ -6,7 +6,7 @@
         <div id="map" class="fixed-height"></div>
         <div class="last-witness">
           <div v-if="showLegend && lastBlocks.length > 0">
-            <div><img :src="icon.green" width="10px" class="mr-2"/>Current Witness: <router-link :to="'/explorer/@'+current_witness.witness">{{current_witness.visible_name}}</router-link> {{current_location}}</div>
+            <div><img :src="icon.green" width="10px" class="mr-2"/>Current Witness: <router-link :to="'/@'+current_witness.witness">{{current_witness.visible_name}}</router-link> {{current_location}}</div>
             <!--<div><img :src="icon.blue"   width="10px" class="mr-2"/>witness online</div>-->
             <div><img :src="icon.yellow" width="10px" class="mr-2"/>witness online</div>
             <div><img :src="icon.red" width="10px" class="mr-2"/>witness offline</div>

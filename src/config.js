@@ -39,7 +39,7 @@ const VESTS = 'VESTS';
 
 const HARDFORK = 21
 
-const EXPLORER = '/explorer/'
+const EXPLORER = '/'
 const EXPLORER2 = '/steemexplorer/#/explorer/'
 const DSTEEM_TIMEOUT = 5000 //ms
 
