@@ -80,24 +80,24 @@ export default new Router({
       component: () => import('./views/ReportsPage.vue')
     },
     {
-      path: "/explorer",
+      path: "/",
       name: "Explorer",
       component: HomeExplorer
     },
     {
-      path: '/explorer/@:account',
+      path: '/@:account',
       name: 'Account',
       component: AccountExplorer
     },{
-      path: '/explorer/@:account/:permlink',
+      path: '/@:account/:permlink',
       name: 'Post',
       component: PostExplorer
     },{
-      path: '/explorer/b/:id',
+      path: '/b/:id',
       name: 'Block',
       component: BlockExplorer
     },{
-      path: '/explorer/b/:id/:tx',
+      path: '/b/:id/:tx',
       name: 'Transaction',
       component: TransactionExplorer
     },{
